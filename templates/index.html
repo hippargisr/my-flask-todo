@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block sub_content %}
+<style>
+	table{
+		margin-top: 20px;
+		margin-left: 20px;
+	}
+</style>
+
+<div class="content" style="text-align: center;">
+	<h1 style="text-align: center;">Task Master</h1>
+	{% if result|length < 1 %}
+		<h4 style="text-align: center;">There is no tasks. Create on below!</h4>
+	{% else %}
+	<table border="1">
+		<tr>
+			<th>Task Content</th>
+			<th>Actions</th>
+		</tr>
+		{% for i in result %}
+			<tr>
+				<td>{{i['content']}}</td>
+				<td><a class="btn btn-sm btn-info" href="{{url_for('update', id=i['id'])}}">Update</a>
+					<a class="btn btn-sm btn-danger" href="{{url_for('delete',id= i['id'])}}">Delete</a>
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+	{% endif %}
+</div>
+<br>
+<form method="POST">
+	<input type="text" name="input-data" id="task"/>
+	<input type="submit"/>
+</form>
+{{error}}
+
+<script>
+	$(document).ready(function(){
+		console.log("Client site");
+		
+	});
+</script>
+
+{% endblock %}

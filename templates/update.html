@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block sub_content %}
+<form method="POST">
+	<label class="alert alert-secondary" style="text-align: center;width:100%;">Update master</label>
+	<br><input type="text" class="form-control" name="input-data" id="task" value="{{task['content']}}" style="size: 70px;"/>
+<br>
+	<input type="submit" class="btn btn-warning" value="Update"/>
+</form>
+{{error}}
+{% endblock %}
